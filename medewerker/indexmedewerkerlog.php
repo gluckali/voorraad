@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="navbar">
-    <a href="#home">Home</a>
+    <a href="indexmedewerkerlog.php">Home</a>
     <a href="#news">News</a>
     <a href="#contact">Contact</a>
     <a href="logout.php"> log out</a>

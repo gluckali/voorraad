@@ -9,9 +9,10 @@
 </head>
 <body>
   <div class="navbar">
-    <a href="#home">Home</a>
+    <a href="indexklant.php">Home</a>
     <a href="#news">News</a>
-    <a href="#contact">Contact</a>
+    <a href="reserveren.php">reserveren</a>
+    <a href="klant-edit.php">wijzig gegevens</a>
     <a href="logout.php"> log out</a>
   </div>
   

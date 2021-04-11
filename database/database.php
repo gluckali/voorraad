@@ -11,9 +11,9 @@ class database{
     // bij de construct leggen we de connectie aan met de database 
     public function __construct(){
         $this->host = 'localhost';
-        $this->database = 'voorraad';
         $this->username = 'root';
         $this->password = '';
+        $this->database = 'struggles';
 
     // hier wordt er bij de "try" de connectie gemaakt met de database 
     try{
@@ -92,7 +92,6 @@ class database{
                         session_start();
                         $_SESSION['id'] = $result['id'];
                         $_SESSION['gebruikersnaam'] = $result['gebruikersnaam'];
-
                         // redirect naar home_medewerker.
                         header("location: indexklant.php");
                     // }
@@ -120,9 +119,27 @@ class database{
     public function add($statement, $named_placeholder, $location){
         $stmt = $this->conn->prepare($statement);
         $stmt->execute($named_placeholder);
-        header('location:'.$location);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        header('location:'.$location);
         exit();
+      }
+
+      public function excel($medewerkers){
+
+        $query = "SELECT * FROM medewerker";
+    
+        if($medewerkers !== NULL){
+            // query for specific user when a username is supplied
+            $query .= 'WHERE medewerker = :medewerker';
+        }
+    
+        $stmt = $this->conn->prepare($query);
+    
+        // check if username is supplied, if so, pass assoc array to execute
+        $medewerkers !== NULL ? $stmt->execute(['medewerker'=>$medewerker]) : $stmt->execute();
+    
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
       }
 }
 

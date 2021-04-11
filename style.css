@@ -1,3 +1,8 @@
+body {
+  margin: 0 !important;
+  --navbar-height: 46px;
+}
+
 .login {
     margin: auto;
     width: 50%;
@@ -8,9 +13,10 @@
 
 .navbar {
     overflow: hidden;
-    background-color: #333;
+    background-color: rgb(90, 4, 4);
     position: fixed; /* zodat het fixed is en niet beneden gaat met je  */
     top: 0; /* doet nav bar helemaal boven */
+    height: 50px; 
     width: 100%; /* self explainatory  */
     margin-left: -10px; /* dit filt de gap als je een 2560x1440px scherm hebt */
   }
@@ -24,6 +30,16 @@
     padding: 14px 16px;
     text-decoration: none;
   }
+  .navbar .fake-image {
+    width: 30px;
+    height: 30px;
+    background-color: rgb(230, 230, 9);
+    /* push the content away from the top */
+    margin-top: auto;
+    /* push the content away from the bottom */
+    margin-bottom: auto;
+    margin-left: 8px;
+}
   
   /* kleur veranderd als je erover browst */
   .navbar a:hover {
@@ -43,4 +59,20 @@
 /* this is for the text in the middle of the index because the nav bar kinda ruins it */
 .h1 {
     margin-top: 2%;
+}
+.logout{
+  float: right;
+  margin-right: 50%;
+  text-align: right;
+  color: red;
+
+}
+
+.input {
+  margin-top: 25%;
+  width: 50%;
+  border: 3px solid green;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
 }

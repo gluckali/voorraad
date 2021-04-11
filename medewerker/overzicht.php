@@ -2,14 +2,29 @@
 include '../database/database.php';
 
 $db = new database();
-echo "1";
 $medewerkers = $db->select("SELECT * FROM medewerker", []);
-echo "2";
-print_r($medewerkers);
 
+if(isset($_POST['export'])){
+    $filename = "user_data_export.xls";
+    header("Content-Type: application/vnd.ms-excel");
+    header("Content-Disposition: attachment; filename=\"$filename\"");
+    $print_header = false;
+    // excel
+    $medewerker = $db->excel(NULL);
+    if(!empty($medewerker)){
+        foreach($medewerker as $row){
+            if(!$print_header){
+                echo implode("\t", array_keys($row)) ."\n";
+                $print_header=true;
+
+            }
+            echo implode("\t", array_values($row)) ."\n";
+        }
+    }
+    exit;
+}
 $columns = array_keys($medewerkers[0]);
 $row_data = array_values($medewerkers);
-
 ?>
 
 <table> 
@@ -36,9 +51,9 @@ $row_data = array_values($medewerkers);
                     </td>
                     </tr>
                 <?php } ?>
-
-              
-         
+                <form action='overzicht.php' method='POST'>
+            <input type='submit' name='export' value='Export to excel file' />
+        </form>
         </table>   
     </body>
 </html>

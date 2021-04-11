@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include "../database/database.php";
-
+print_r(password_hash("1234", PASSWORD_DEFAULT));
 if(isset($_POST['submit'])){
     $fields = ['gebruikersnaam', 'wachtwoord'];
     $error = false; // if false then it will run

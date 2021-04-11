@@ -1,7 +1,7 @@
 <?php 
 include "../database/database.php";
 session_start();
-// print_r(password_hash("1234", PASSWORD_DEFAULT)); // REMOVE THIS THIS IS TO DECRYPT THE PASSWORD!
+print_r(password_hash("1234", PASSWORD_DEFAULT)); // REMOVE THIS THIS IS TO DECRYPT THE PASSWORD!
 
 if(isset($_POST['submit'])){
     $fields = ['gebruikersnaam', 'wachtwoord'];
